@@ -5,6 +5,6 @@
 # CraftCo
 **Redifining What Creativity Means**
 # News 
-**The set of our crates are set to launch at Oakridge Middle School on December 17th and plans to countinue selling based on sales <br>  (Part of CraftCo Legacy Edition)**
+**The set of our crates are set to launch at Oakridge Middle School on December 17th <br>  (Part of CraftCo Legacy Edition)**
 # Legal 
 **CraftCo uses Github to host our websites... <br> Content Stored On Our Websites Is Property Of Github And CraftCo - All Rights Reserved 2021**
