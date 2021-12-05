@@ -15,34 +15,25 @@
 <body onLoad="Loaded()">
 	
 <p id="Welcome"> </p>
+<p id="WelcomeMessage"> Welcome </p>
 <p id="Name"> </p>
 <audio id="Typing" src="TypingSound.mp3" type="audio/mp3" autoplay> </audio>
 <audio id="StartMusic" src="IntroMusic.mp3" type="audio/mp3" loop autoplay> </audio>
 
 <div id="Navigation"> </div>
+<img id="AdvancedMenu" src="AdvancedMenu.png" width="500px" height="300px" alt="erRor">
 	
 
 
  
 <script>
-let scene, camera, renderer, skyboxGeo, skybox, material, cubematerials, skybox1, skybox2, skybox3; //Sets ThreeJs Variables 
-var StartPosition = true; //Asks it the user is at the start 
-var RotateFirstCubeVar = true; //Rotates The First Cube
-var MoveFirstCubeCenter = true; //Moves The First Cube To The Center
-var ZoomInFirstCube = true; 
-var CameraX = -9999; 
-var CameraY = -300;
-var CameraZ = 20000;
-var RoatateFirstBox = true; 
-var RoatateSecondBox = true; 
-var RoatateThirdBox = true; 
-var StandardCubeZoomIn = false;
-var ZoomStandardCube = true;  
+let scene, camera, renderer, skyboxGeo, skybox, material, cubematerials; //Sets ThreeJs Variables 
 
 function Loaded() {
 InitializeThreeJs(); 
 //Enable Intro Text 
 }
+	
 //Creates A Basic Three.js Scene 
 function InitializeThreeJs() {
 scene = new THREE.Scene(); 
@@ -52,14 +43,33 @@ scene = new THREE.Scene();
     renderer.setSize(window.innerWidth, window.innerHeight); 
 	 document.body.appendChild(renderer.domElement); 
       renderer.domElement.id = "canvas"; 
-	   AddFirstCube(); 
-	   Animate(); 
+	   AddCube(); 
+	    Animate(); 
 }
 
 function Animate() {
 renderer.render(scene, camera); 
- requestAnimationFrame(Animate); 
+ skybox.rotation.x += 0.005; 
+  skybox.rotation.y += 0.005;
+   requestAnimationFrame(Animate); 
 }
+
+//Creates And Adds The Cube
+function AddCube() {
+cubematerials = [ 
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}),  
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
+new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}) 
+]; 
+material = new THREE.MeshFaceMaterial(cubematerials);  
+skyboxGeo = new THREE.BoxGeometry(8000, 8000, 8000); 
+skybox = new THREE.Mesh(skyboxGeo, material); 
+scene.add(skybox); 
+}
+	
 //Adds First Text  
 function IntroText() {
 var Welcome = document.getElementById("Welcome"); 
@@ -91,30 +101,25 @@ setTimeout(function(){Name.innerHTML = "The Craft Compa";},4800);
 setTimeout(function(){Name.innerHTML = "The Craft Compan";},5000); 
 setTimeout(function(){Name.innerHTML = "The Craft Company";},5200); 
 }
-//Creates And Adds The First Cube
-function AddFirstCube() {
-cubematerials = [ 
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}),  
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}), 
-new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("Crate.jpg"), side: THREE.DoubleSide}) 
-]; 
-material = new THREE.MeshFaceMaterial(cubematerials);  
-skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000); 
-skybox = new THREE.Mesh(skyboxGeo, material); 
-scene.add(skybox); 
-RotateFirstCube(); 
+	
+function Timer() {
+var TimeHours = new Date(); 
+var Hours = TimeHours.getHours(); 
+var TimeMinutes = new Date(); 
+var Minutes = TimeMinutes.getMinutes(); 
+if (Hours > 12) {
+     Hours = Hours - 12; 
 }
+if (Minutes > 9) {
+document.getElementById("WelcomeMessage").innerHTML = Hours + ":" + Minutes; 
+}
+else {
+document.getElementById("WelcomeMessage").innerHTML = Hours + ":" + "0" + Minutes;	 } 
+requestAnimationFrame(Timer); }
 
-function RotateFirstCube() {
-skybox.rotation.x += 0.005; 
-skybox.rotation.y += 0.005; 
-if (RotateFirstCubeVar) {
-	requestAnimationFrame(RotateFirstCube); 
-}
-	}
+setTimeout(Timer, 4000); 
+setTimeout(function(){$("#WelcomeMessage").fadeOut(1000);}, 3000); 
+setTimeout(function(){$("#WelcomeMessage").fadeIn(1000);}, 4000); 
 </script>
 </body>
 </html>
