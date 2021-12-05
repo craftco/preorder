@@ -3,7 +3,10 @@
 **If you are attempting to navigate to craftco website please click [HERE](https://bit.ly/3rC9fuA).
 <br> Thank you!**
 # CraftCo
-**Redifining What Creativity Means**
+**Jump Into A World Of Creativity With CraftCo  
+Standard Box - $3.00<br>
+Holiday Box - $5.00<br>
+Ultra Box - $7.00**<br>
 # News 
 **The first set of our crates are set to launch at Oakridge Middle School on December 17th <br>  (Part of CraftCo Legacy Edition)**
 # Legal 
