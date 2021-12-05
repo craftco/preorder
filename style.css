@@ -1,7 +1,33 @@
 @charset "utf-8";
 /* CSS Document */
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    background: none;
+    border-radius: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+  }
+
 body {
 	background: black; 
+	overflow-x: hidden;
 }
 #Navigation {
 	background-color: #282727; 
@@ -12,4 +38,23 @@ body {
     left: 0%;
 	z-index: 3; 
 	box-shadow: 5px 5px 12.5px #282727;
+}
+#AdvancedMenu {
+	position: fixed; 
+	z-index: 4; 
+	width: calc(4%);
+	height: calc(5%); 
+	top: 1.7%; 
+	left: 0.5%;
+}
+#WelcomeMessage {
+	position: fixed; 
+	z-index: 4; 
+	width: calc(4%);
+	height: calc(5%); 
+	top: -3.5%; 
+	left: 5%;
+	font-size: 30px;
+	font-weight: bold;
+	color: white; 
 }
